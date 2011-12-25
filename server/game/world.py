@@ -13,7 +13,7 @@ class World:
         for x in xrange(World.size):
             self.cells.append([])
             for y in xrange(World.size):
-                self.cells[x].append(cell.Cell())
+                self.cells[x].append(cell.Cell(x, y))
 
         # this dict will store all the players
         self.players = {}
