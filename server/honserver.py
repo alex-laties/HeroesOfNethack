@@ -5,8 +5,8 @@ urls = (
     "/", "index",
     "(/css/.+)", "staticfiles",
     "(/js/.+)", "staticfiles",
-    "/ajax/?(.+)", "ajax"
-    "/count", "count"
+    "/ajax/?(.+)", "ajax",
+    "/count", "count",
     "/reset", "reset"
 )
 
