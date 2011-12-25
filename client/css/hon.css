@@ -13,11 +13,7 @@ aside, nav, article, figure {
 
 .main {
   margin: 0 auto;
-}
-
-.main canvas {
-  display:inline;
-  background-color: #000000;
+  color: black;
 }
 
 #stats {
