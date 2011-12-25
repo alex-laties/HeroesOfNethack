@@ -13,6 +13,9 @@ def handle(command, session):
         print worlds[session.world_id]
 
         return "OK"
+    elif command == "print":
+        return worlds[session.world_id]
+
     elif command == "snapshot":
         json = worlds[session.world_id].jsonify()
 
@@ -28,14 +31,19 @@ def handle(command, session):
 
     elif command == "left":
         worlds[session.world_id].move_player(session, -1, 0)
+
+        return worlds[session.world_id]
     elif command == "right":
         worlds[session.world_id].move_player(session, 1, 0)
-        pass
+
+        return worlds[session.world_id]
     elif command == "up":
         worlds[session.world_id].move_player(session, 0, -1)
-        pass
-    elif command == "bottom":
+
+        return worlds[session.world_id]
+    elif command == "down":
         worlds[session.world_id].move_player(session, 0, 1)
-        pass
+
+        return worlds[session.world_id]
     else:
         return "BAD"
