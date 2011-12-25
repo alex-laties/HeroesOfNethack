@@ -8,7 +8,10 @@ class Cell:
         self.objects = []
 
     def __str__(self):
-        return self.char
+        if len(self.objects) > 0:
+            return self.objects[-1].char
+        else:
+            return self.char
 
     def jsonify(self):
         if len(self.objects) > 0:
