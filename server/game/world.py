@@ -54,7 +54,7 @@ class World:
                     if isinstance(obj, player.Player):
                         flag = True
 
-                if flag == False:
+                if flag == True:
                     continue
 
                 self.cells[x][y].objects.append(new_player)
