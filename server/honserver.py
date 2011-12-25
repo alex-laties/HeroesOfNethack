@@ -7,7 +7,8 @@ urls = (
 
 class index:
     def GET(self):
-        return "<b><i>Hello, World!</i></b>"
+        f = open("../client/index.html", "r")
+        return f.read()
 
 app = web.application(urls, globals())
 
