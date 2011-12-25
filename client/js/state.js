@@ -12,9 +12,10 @@ state.Init = function ()
 state.getWorld = function() {
   var worker = new Worker("./js/world_worker.js");
   worker.onmessage = function (event) {
-    alert("received response");
     HoN.State.world = event.data.world;
-    $("#view'").html(HoN.State.world);
+    $("#view").html(HoN.State.world);
     HoN.State.worldID = event.data.id;
   }
+  
+  worker.postMessage("hello");
 }
