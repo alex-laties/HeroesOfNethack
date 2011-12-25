@@ -10,5 +10,5 @@ def handle(command, session):
     elif command == "exit":
         import sys
         sys.exit(0)
-    else
+    else:
         return "unknown request"
