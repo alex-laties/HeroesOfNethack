@@ -45,8 +45,8 @@ class World:
             new_player = player.Player()
             self.players[session.session_id] = new_player
             while True:
-                x = random.randint(0, World.size)
-                y = random.randint(0, World.size)
+                x = random.randint(0, World.size - 1)
+                y = random.randint(0, World.size - 1)
 
                 flag = False
 
