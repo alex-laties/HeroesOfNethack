@@ -5,9 +5,16 @@
   
   <link rel="stylesheet" href="./css/hon.css" type="text/css" media="screen" />
   <script type="text/javascript" src="./js/jquery-1.7.1.js"></script>
+  <script type="text/javascript" src="./js/util.js"></script>
   <script type="text/javascript" src="./js/hon.js"></script>
+  <script type="text/javascript" src="./js/state.js"></script>
 </head>
-
+<script>
+  $(document).ready(function() {
+    HoN.Init();
+    HoN.State.Init();
+    });
+</script>
 <body>
 	<header>
     <h1>Heroes of Nethack</h1>
@@ -16,11 +23,27 @@
       <li id="join">Join Game</li>
     </ul>
   </header>
-  
+  <div class="choice">
+  </div>
   <div class="main">
-    <canvas id="stats" />
-    <canvas id="view" />
-    <canvas id="focus" />
+    <div id="stats">
+      <p id="name"></p>
+      <p id="hp"></p>
+      <p id="mp"></p>
+      <p id="agi"></p>
+      <p id="int"></p>
+      <p id="str"></p>
+      <ul id="items">
+        <li id="item1"></li>
+        <li id="item2"></li>
+        <li id="item3"></li>
+        <li id="item4"></li>
+        <li id="item5"></li>
+        <li id="item6"></li>
+      </ul>
+    </div>
+    <div id="view"> </div>
+    <div id="focus"> </div>
   </div>
   
   <footer>

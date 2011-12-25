@@ -10,5 +10,66 @@ aside, nav, article, figure {
 /*END RESET*/
 
 /*START STATE*/
-.main {display:none;}
 
+.main {
+  margin: 0 auto;
+}
+
+.main canvas {
+  display:inline;
+  background-color: #000000;
+}
+
+#stats {
+  width: 250px;
+  height: 600px;
+}
+
+#view {
+  width: 600px;
+  height: 600px;
+}
+
+#focus {
+  width: 250px;
+  height: 600px;
+}
+
+body {
+  background-color: #004A4A;
+}
+header {
+  background-color: #004A4A;
+}
+
+header h1 {
+  color: #A3A300;
+  background-color: #801919;
+  height: 40px;
+}
+
+#nav {
+  width: 180px;
+  background-color: #801919;
+  height: 30px;
+}
+
+#nav ul {
+padding-top: 10px;
+}
+
+#nav li {
+  display: inline;
+  width: 100px;
+  border-style: solid;
+  border-color: #4AB893;
+  color: white;
+}
+
+#nav li:hover {
+  color: green;
+}
+
+footer {
+  display:none;
+}
