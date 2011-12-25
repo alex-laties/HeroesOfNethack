@@ -80,4 +80,4 @@ class World:
             old_cell.objects.remove(p)
             new_cell = self.cells[new_y][new_x]
             new_cell.objects.append(p)
-            player.container = new_cell
+            p.container = new_cell
