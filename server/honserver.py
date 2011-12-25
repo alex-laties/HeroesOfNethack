@@ -3,11 +3,17 @@ import web
 
 urls = (
     "/", "index"
+    "/client/(.+)", "client"
 )
 
 class index:
     def GET(self):
         f = open("../client/index.html", "r")
+        return f.read()
+
+class index:
+    def GET(self, name):
+        f = open("../client/" + name, "r")
         return f.read()
 
 app = web.application(urls, globals())
