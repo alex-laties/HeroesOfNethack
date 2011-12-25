@@ -11,7 +11,7 @@ class Cell:
         return self.char
 
     def jsonify(self):
-        if len(objects) > 0:
+        if len(self.objects) > 0:
             return self.objects[-1].jsonify()
         else:
             dict = {}
