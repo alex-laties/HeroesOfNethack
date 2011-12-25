@@ -3,7 +3,8 @@ import web
 
 urls = (
     "/", "index"
-    "/client/(.+)", "client"
+    "/css/(.+)", "static"
+    "/js/(.+)", "static"
 )
 
 class index:
@@ -11,7 +12,7 @@ class index:
         f = open("../client/index.html", "r")
         return f.read()
 
-class index:
+class static:
     def GET(self, name):
         f = open("../client/" + name, "r")
         return f.read()
