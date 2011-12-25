@@ -31,7 +31,7 @@ def handle(command, session):
     elif command == "right":
         worlds[session.world_id].move_player(session, 1, 0)
         pass
-    elif command == "top":
+    elif command == "up":
         worlds[session.world_id].move_player(session, 0, -1)
         pass
     elif command == "bottom":

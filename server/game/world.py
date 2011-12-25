@@ -76,8 +76,8 @@ class World:
         new_y = max(0, min(new_y, World.size - 1))
 
         if ((new_x != cur_x) or (new_y != cur_y)):
-            old_cell = self.cells[cur_x][cur_y]
+            old_cell = self.cells[cur_y][cur_x]
             old_cell.objects.remove(p)
-            new_cell = self.cells[new_x][new_y]
+            new_cell = self.cells[new_y][new_x]
             new_cell.objects.append(p)
             player.container = new_cell
