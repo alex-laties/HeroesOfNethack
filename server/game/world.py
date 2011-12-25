@@ -27,7 +27,10 @@ class World:
             snapshot.append([])
             for y in xrange(World.size):
                 cell_snapshot = self.cells[x][y].jsonify()
-                snapshot[x].append(cell_snapshot)
+                cell_snapshot['x'] = str(x)
+                cell_snapshot['y'] = str(y)
+                snapshot[x].append(cell_snapshot,
+                                   separators=(',', ':'))
 
         return json.dumps(snapshot)
 
