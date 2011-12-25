@@ -14,7 +14,7 @@ class index:
 
 class static:
     def GET(self, name):
-        f = open("../client/" + name, "r")
+        f = open("../client/{0}".format(name), "r")
         return f.read()
 
 app = web.application(urls, globals())
