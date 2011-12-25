@@ -1,10 +1,30 @@
-!DOCTYPE html
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-	<title>Hello</title>
+	<title>Heroes of Nethack!</title>
+  
+  <link rel="stylesheet" href="./css/hon.css" type="text/css" media="screen" />
+  <script type="text/javascript" src="./js/jquery-1.7.1.js"></script>
+  <script type="text/javascript" src="./js/hon.js"></script>
 </head>
 
 <body>
-	Hello World!
+	<header>
+    <h1>Heroes of Nethack</h1>
+    <ul id="nav">
+      <li id="create">Create Game</li>
+      <li id="join">Join Game</li>
+    </ul>
+  </header>
+  
+  <div class="main">
+    <canvas id="stats" />
+    <canvas id="view" />
+    <canvas id="focus" />
+  </div>
+  
+  <footer>
+    Lol, wtf are you looking here for?
+  </footer>
 </body>
-</html>
+</html> 
