@@ -29,8 +29,8 @@ class staticfiles:
 
 class ajax:
     def GET(self, command):
-        print command
-        return "not yet"
+        import game.handler
+        return game.handler.handle(command, session)
 
 class count:
     def GET(self):
