@@ -14,7 +14,7 @@ app = web.application(urls, globals())
 default_session_vars = {}
 default_session_vars["count"] = 0
 session = web.session.Session(app, web.session.DiskStore("sessions"),
-                              initializers = default_session_vars)
+                              initializer = default_session_vars)
 
 class index:
     def GET(self):
