@@ -29,10 +29,9 @@ class World:
                 cell_snapshot = self.cells[x][y].jsonify()
                 cell_snapshot['x'] = str(x)
                 cell_snapshot['y'] = str(y)
-                snapshot[x].append(cell_snapshot,
-                                   separators=(',', ':'))
+                snapshot[x].append(cell_snapshot)
 
-        return json.dumps(snapshot)
+        return json.dumps(snapshot, separators=(',', ':'))
 
     def test(self):
         pass
