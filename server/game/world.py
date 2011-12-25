@@ -33,5 +33,5 @@ class World:
 
         return json.dumps(snapshot, separators=(',', ':'))
 
-    def test(self):
-        pass
+    def ready_player(self, session):
+        print session.session_id

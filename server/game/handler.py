@@ -15,9 +15,12 @@ def handle(command, session):
         return "OK"
     elif command == "snapshot":
         json = worlds[session.world_id].jsonify()
-        print json
 
         return json
+    elif command == "ready_player":
+        worlds[session.world_id].ready_player(session)
+
+        return "OK"
     elif command == "exit":
         sys.exit(0)
 
