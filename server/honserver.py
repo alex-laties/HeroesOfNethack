@@ -4,7 +4,7 @@ import web
 urls = (
     "/", "index",
     "(/css/.+)", "static",
-    "(/js/.+)", "static"
+    "(/js/.+)", "static",
     "/ajax?(.+)", "ajax"
 )
 
