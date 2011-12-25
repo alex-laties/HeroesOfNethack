@@ -13,7 +13,7 @@ class Cell:
     def jsonify(self):
         if len(objects) > 0:
             return self.objects[-1].jsonify()
-        else
+        else:
             dict = {}
 
             dict['c'] = "#" + self.color
