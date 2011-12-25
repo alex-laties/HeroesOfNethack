@@ -13,7 +13,7 @@ class World:
         for x in xrange(World.size):
             self.cells.append([])
             for y in xrange(World.size):
-                self.cells[x].append(cell.Cell(x, y))
+                self.cells[x].append(cell.Cell(y, x))
 
         # this dict will store all the players
         self.players = {}
@@ -22,7 +22,7 @@ class World:
         board = ""
         for x in xrange(World.size):
             for y in xrange(World.size):
-                board += str(self.cells[x][y])
+                board += str(self.cells[y][x])
             board += "\n"
 
         return board
@@ -32,7 +32,7 @@ class World:
         for x in xrange(World.size):
             snapshot.append([])
             for y in xrange(World.size):
-                cell_snapshot = self.cells[x][y].jsonify()
+                cell_snapshot = self.cells[y][x].jsonify()
                 cell_snapshot['x'] = str(x)
                 cell_snapshot['y'] = str(y)
                 snapshot[x].append(cell_snapshot)
@@ -57,8 +57,8 @@ class World:
                 if flag == True:
                     continue
 
-                self.cells[x][y].objects.append(new_player)
-                new_player.container = self.cells[x][y]
+                self.cells[y][x].objects.append(new_player)
+                new_player.container = self.cells[y][x]
 
                 break
         else:
@@ -76,8 +76,8 @@ class World:
         new_y = max(0, min(new_y, World.size - 1))
 
         if ((new_x != cur_x) or (new_y != cur_y)):
-            old_cell = self.cells[cur_x][cur_y]
+            old_cell = self.cells[cur_y][cur_x]
             old_cell.objects.remove(p)
-            new_cell = self.cells[new_x][new_y]
+            new_cell = self.cells[new_y][new_x]
             new_cell.objects.append(p)
             player.container = new_cell
