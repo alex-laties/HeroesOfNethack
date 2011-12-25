@@ -32,12 +32,12 @@ class ajax:
         return "not yet"
 
 class count:
-    def GET(self, command):
+    def GET(self):
         session.count += 1
         return str(session.count)
 
 class reset:
-    def GET(self, command):
+    def GET(self):
         session.kill()
         return "reset!"
 
