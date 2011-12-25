@@ -1,6 +1,6 @@
 var xhr;
 xhr = new XMLHttpRequest();
-xhr.open('GET', "http://www.aperaturetesting.com/ajax/snapshot");
+xhr.open('GET', "/ajax/snapshot");
 xhr.onreadystatechange = function () {
   if (xhr.readyState != 4)
   {
