@@ -10,18 +10,18 @@ class World:
     def __init__(self):
         # init all the cells of the world
         self.cells = []
-        for x in xrange(World.size):
+        for y in xrange(World.size):
             self.cells.append([])
-            for y in xrange(World.size):
-                self.cells[x].append(cell.Cell(y, x))
+            for x in xrange(World.size):
+                self.cells[y].append(cell.Cell(x, y))
 
         # this dict will store all the players
         self.players = {}
 
     def __str__(self):
         board = ""
-        for x in xrange(World.size):
-            for y in xrange(World.size):
+        for y in xrange(World.size):
+            for x in xrange(World.size):
                 board += str(self.cells[y][x])
             board += "\n"
 
@@ -29,13 +29,13 @@ class World:
 
     def jsonify(self):
         snapshot = []
-        for x in xrange(World.size):
+        for y in xrange(World.size):
             snapshot.append([])
-            for y in xrange(World.size):
+            for x in xrange(World.size):
                 cell_snapshot = self.cells[y][x].jsonify()
                 cell_snapshot['x'] = str(x)
                 cell_snapshot['y'] = str(y)
-                snapshot[x].append(cell_snapshot)
+                snapshot[y].append(cell_snapshot)
 
         return json.dumps(snapshot, separators=(',', ':'))
 
@@ -50,7 +50,7 @@ class World:
 
                 flag = False
 
-                for obj in self.cells[x][y].objects:
+                for obj in self.cells[y][x].objects:
                     if isinstance(obj, player.Player):
                         flag = True
 
