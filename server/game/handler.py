@@ -1,3 +1,5 @@
+from world import World
+
 did_world_init = False
 worlds = {}
 
