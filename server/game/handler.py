@@ -31,14 +31,19 @@ def handle(command, session):
 
     elif command == "left":
         worlds[session.world_id].move_player(session, -1, 0)
+
         return worlds[session.world_id]
     elif command == "right":
         worlds[session.world_id].move_player(session, 1, 0)
+
         return worlds[session.world_id]
     elif command == "up":
         worlds[session.world_id].move_player(session, 0, -1)
+
+        return worlds[session.world_id]
     elif command == "down":
         worlds[session.world_id].move_player(session, 0, 1)
+
         return worlds[session.world_id]
     else:
         return "BAD"
