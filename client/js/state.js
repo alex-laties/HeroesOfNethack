@@ -17,4 +17,6 @@ state.getWorld = function() {
     $("#view'").html(HoN.State.world);
     HoN.State.worldID = event.data.id;
   }
+  
+  worker.postMessage("hello");
 }
