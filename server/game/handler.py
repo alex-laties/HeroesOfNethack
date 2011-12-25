@@ -25,5 +25,17 @@ def handle(command, session):
         sys.exit(0)
 
         return "OK"
+
+    elif command == "left":
+        worlds[session.world_id].move_player(session, -1, 0)
+    elif command == "right":
+        worlds[session.world_id].move_player(session, 1, 0)
+        pass
+    elif command == "top":
+        worlds[session.world_id].move_player(session, 0, -1)
+        pass
+    elif command == "bottom":
+        worlds[session.world_id].move_player(session, 0, 1)
+        pass
     else:
         return "BAD"

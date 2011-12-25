@@ -13,7 +13,7 @@ class World:
         for x in xrange(World.size):
             self.cells.append([])
             for y in xrange(World.size):
-                self.cells[x].append(cell.Cell())
+                self.cells[x].append(cell.Cell(x, y))
 
         # this dict will store all the players
         self.players = {}
@@ -64,3 +64,20 @@ class World:
         else:
             # we are already ready
             pass
+
+    def move_player(self, session, x_offset, y_offset):
+        p = self.players[session.session_id]
+        cur_x = p.container.x
+        cur_y = p.container.y
+
+        new_x = cur_x + x_offset
+        new_x = max(0, min(new_x, World.size - 1))
+        new_y = cur_y + y_offset
+        new_y = max(0, min(new_y, World.size - 1))
+
+        if ((new_x != cur_x) or (new_y != cur_y)):
+            old_cell = self.cells[cur_x][cur_y]
+            old_cell.objects.remove(p)
+            new_cell = self.cells[new_x][new_y]
+            new_cell.objects.append(p)
+            player.container = new_cell
