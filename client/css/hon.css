@@ -1,0 +1,14 @@
+/*RESET*/ 
+* { margin: 0; padding: 0; outline: 0; }
+
+/* HTML5 tags */
+header, section, footer,
+aside, nav, article, figure {
+	display: block;
+}
+
+/*END RESET*/
+
+/*START STATE*/
+.main {display:none;}
+
