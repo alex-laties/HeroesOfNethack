@@ -1,5 +1,6 @@
 #!/usr/bin/env python2
 import web
+web.config.debug = False
 
 urls = (
     "/", "index",
