@@ -3,8 +3,8 @@ import web
 
 urls = (
     "/", "index",
-    "/css/(.+)", "static",
-    "/js/(.+)", "static"
+    "(/css/.+)", "static",
+    "(js/.+)", "static"
 )
 
 class index:
