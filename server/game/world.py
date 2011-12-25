@@ -1,7 +1,10 @@
 import cell
+import json
 
 class World:
+    # hardcoded constants
     size = 16
+
     def __init__(self):
         self.cells = []
         for x in xrange(World.size):
@@ -17,6 +20,16 @@ class World:
             board += "\n"
 
         return board
+
+    def jsonify(self):
+        snapshot = []
+        for x in xrange(World.size):
+            snapshot.append([])
+            for y in xrange(World.size):
+                cell_snapshot = self.cells[x][y].jsonify()
+                snapshot[x].append(cell_snapshot)
+
+        return json.dumps(snapshot)
 
     def test(self):
         pass
