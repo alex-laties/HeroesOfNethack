@@ -13,6 +13,9 @@ def handle(command, session):
         print worlds[session.world_id]
 
         return "OK"
+    elif command == "print":
+        return worlds[session.world_id]
+
     elif command == "snapshot":
         json = worlds[session.world_id].jsonify()
 
