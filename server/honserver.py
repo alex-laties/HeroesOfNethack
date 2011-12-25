@@ -2,8 +2,8 @@
 import web
 
 urls = (
-    "/", "index"
-    "/css/(.+)", "static"
+    "/", "index",
+    "/css/(.+)", "static",
     "/js/(.+)", "static"
 )
 
