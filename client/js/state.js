@@ -14,7 +14,7 @@ state.getWorld = function() {
   worker.onmessage = function (event) {
     HoN.State.world = event.data.world;
     var view = $("#view");
-    view.html(HoN.State.world);
+    view[0].html(HoN.State.world);
     HoN.State.worldID = event.data.id;
   }
   
