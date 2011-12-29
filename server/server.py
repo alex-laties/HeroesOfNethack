@@ -91,3 +91,5 @@ def main():
     srv = WebSocket(port, host)
     srv.start()
     
+if __name__ == "__main__":
+  main()
