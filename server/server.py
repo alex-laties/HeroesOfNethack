@@ -62,7 +62,7 @@ def main():
   opts = 0
   args = 0
   try:
-    opts, args = getopt.getopt(sys.argv[1:], ["h", "p", "h"], ["help", "port", "hostname"])
+    opts, args = getopt.getopt(sys.argv[1:], "h p: hn:", ["help", "port", "hostname"])
   except getopt.error, msg:
     print msg
     print "for help use --help"
@@ -83,7 +83,7 @@ def main():
       except exceptions.ValueError:
         print "port value not an int"
         sys.exit(2);
-    elif o in ("--hostname", "-h"):
+    elif o in ("--hostname", "-hn"):
       host = a
   
   if port != 0 and host != 0:
