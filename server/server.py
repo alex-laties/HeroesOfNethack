@@ -59,6 +59,8 @@ class WebSocket:
 
 
 def main():
+  opts = 0
+  args = 0
   try:
     opts, args = getopt.getopt(sys.argv[1:], "h", ["help"])
   except getopt.error, msg:
