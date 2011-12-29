@@ -72,8 +72,6 @@ def main():
   host = 0;
   
   for o, a in opts:
-    print o
-    print a
     if o in ("-h", "--help"):
       print __doc__
       sys.exit(0)
