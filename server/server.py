@@ -33,7 +33,7 @@ class WebSocket:
       if not self.shaken:
         header += client.recv(16)
         
-        if header.find(\r\n\r\n') != -1:
+        if header.find('\r\n\r\n') != -1:
           data = header.split('\r\n\r\n', 1)[1]
           self.shaken = True
           client.send(self.Handshake)
