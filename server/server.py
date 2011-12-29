@@ -88,6 +88,10 @@ def main():
     print "starting server"
     srv = WebSocket(port, host)
     srv.start()
-    
+  else:
+    print "port was set to: " + port
+    print "host was set to: " + host
+    print "breaking down and exiting"
+  
 if __name__ == "__main__":
   main()
