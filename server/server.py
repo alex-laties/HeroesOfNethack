@@ -70,6 +70,8 @@ def main():
   host = 0;
   
   for o, a in opts:
+    print o
+    print a
     if o in ("-h", "--help"):
       print __doc__
       sys.exit(0)
@@ -82,7 +84,8 @@ def main():
     elif o in ("--hostname", "-h"):
       host = a
   
-  if port != 0 and host !=0:
+  if port != 0 and host != 0:
+    print "starting server"
     srv = WebSocket(port, host)
     srv.start()
     
