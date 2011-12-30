@@ -14,7 +14,7 @@ class WebSocket:
     self.Port = Port
     self.HostName = HostName
     self.Origin='WebSocket-Origin: '+'http://'+HostName+'\r\n'
-    self.Socket='WebSocket-Location: '+'ws://'+HostName+':'+Port+'\r\n'
+    self.Socket='WebSocket-Location: '+'ws://'+HostName+':'+str(Port)+'\r\n'
     self.Handshake = self.preHandshake + self.Origin + self.Socket
     
   def start(self):
@@ -22,13 +22,13 @@ class WebSocket:
     #initialize the socket
     self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     self.sock.bind(("", self.Port))
-    self.listen(5)
+    self.sock.listen(5)
     self.shaken = False
     
     data = ''
     header = ''
     
-    client, address = sock.accept()
+    client, address = self.sock.accept()
     while not self.stopped:
       if not self.shaken:
         header += client.recv(16)
@@ -62,7 +62,7 @@ def main():
   opts = 0
   args = 0
   try:
-    opts, args = getopt.getopt(sys.argv[1:], "h p: hn:", ["help", "port", "hostname"])
+    opts, args = getopt.getopt(sys.argv[1:], "hp:n:", ["help", "port=", "hostname="])
   except getopt.error, msg:
     print msg
     print "for help use --help"
@@ -70,7 +70,7 @@ def main():
   
   port = 0;
   host = 0;
-  
+  print opts  
   for o, a in opts:
     if o in ("-h", "--help"):
       print __doc__
@@ -78,10 +78,10 @@ def main():
     elif o in ("--port", "-p"):
       try:
         port = int(a)
-      except exceptions.ValueError:
-        print "port value not an int"
+      except ValueError:
+        print "port value not an int: " + a
         sys.exit(2);
-    elif o in ("--hostname", "-hn"):
+    elif o in ("--hostname", "-n"):
       host = a
   
   if port != 0 and host != 0:
