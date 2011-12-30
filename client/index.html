@@ -12,7 +12,7 @@
 <script>
   $(document).ready(function() {
     HoN.Init();
-    var ws = new WebWorker("ws://www.aperaturetesting.com:9999/");
+    var ws = new WebSocket("ws://www.aperaturetesting.com:9999/");
     ws.onopen = function() {
       ws.send("hello");
     };
