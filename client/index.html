@@ -1,62 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-	<title>Heroes of Nethack!</title>
-  
-  <link rel="stylesheet" href="/css/hon.css" type="text/css" media="screen" />
-  <script type="text/javascript" src="/js/jquery-1.7.1.js"></script>
-  <script type="text/javascript" src="/js/util.js"></script>
-  <script type="text/javascript" src="/js/hon.js"></script>
-  <script type="text/javascript" src="/js/state.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
 </head>
-<script>
-  $(document).ready(function() {
-    HoN.Init();
-    var ws = new WebSocket("ws://www.aperaturetesting.com:9999/");
-    ws.onopen = function() {
-      ws.send("hello");
-    };
-
-    ws.onmessage = function(e) {
-      alert(e.data);
-    };
-
-    ws.onclose = function(){};
-    });
-</script>
 <body>
-	<header>
-    <h1>Heroes of Nethack</h1>
-    <ul id="nav">
-      <li id="create">Create Game</li>
-      <li id="join">Join Game</li>
-    </ul>
-  </header>
-  <div class="choice">
-  </div>
-  <div class="main">
-    <div id="stats">
-      <p id="name"></p>
-      <p id="hp"></p>
-      <p id="mp"></p>
-      <p id="agi"></p>
-      <p id="int"></p>
-      <p id="str"></p>
-      <ul id="items">
-        <li id="item1"></li>
-        <li id="item2"></li>
-        <li id="item3"></li>
-        <li id="item4"></li>
-        <li id="item5"></li>
-        <li id="item6"></li>
-      </ul>
-    </div>
-    <div id="view"> </div>
-    <div id="focus"> </div>
-  </div>
-  
-  <footer>
-    Lol, wtf are you looking here for?
-  </footer>
+  <script>
+    var socket = io.connect('http://aperaturetesting.com');
+    socket.on('news', function(data) {
+      console.log(data);
+      document.getElementById('woot').innerHTML = data;
+      socket.emit('my other event', {my : 'data' });
+    });
+  </script>
+
+  <h1 id="woot">Connecting...</h1>
 </body>
-</html> 
+</html>
+
