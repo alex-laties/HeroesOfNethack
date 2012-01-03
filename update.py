@@ -44,6 +44,7 @@ def main():
   call(["git", "checkout", branch])
   print "copying..."  
   call(["cp", "-r" , temp + "/client/index.html", temp+"/client/css", temp+"/client/js", target])
+  call(["cp", "-r", temp + "/common", target])
   print "removing temp..."
   #call(["rm", "-rf", temp])
 
