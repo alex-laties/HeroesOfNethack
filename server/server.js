@@ -2,10 +2,12 @@ var app = require('http').createServer(handler),
   io = require('socket.io').listen(app),
   fs = require('fs');
 
+var index = process.argv[2] || '/var/www/index.html';
+
 app.listen(80);
 
 function handler (req, res) {
-  fs.readFile('/var/www/index.html', 
+  fs.readFile(index, 
   function (err, data) {
     if(err){
       res.writeHead(500);
