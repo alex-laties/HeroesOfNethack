@@ -2,15 +2,18 @@
 <html>
 <head>
   <script src="/socket.io/socket.io.js"></script>
+  <script src="/common/js/util.js"></script>
+  <script src="/common/js/Queue.compressed.js"></script>
+  <script src="/js/hon.js"></script>
+  <script src="/js/connection.js"></script>
+  <script src="/js/jquery-1.7.1.js"></script>
 </head>
 <body>
   <script>
-    var socket = io.connect('http://aperaturetesting.com');
-    socket.on('news', function(data) {
-      console.log(data);
-      document.getElementById('woot').innerHTML = data;
-      socket.emit('my other event', {my : 'data' });
-    });
+    $(document).ready(function () {
+      console.log('initializing...');
+      HoN.Connection.Connect();
+      
   </script>
 
   <h1 id="woot">Connecting...</h1>
