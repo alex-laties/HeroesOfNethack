@@ -1,1 +1,10 @@
-test
+Heroes of Nethack is a cooperative online nethack-style game, built to run in the browser!
+
+Why in the browser? No install! If the client is updated, the user just F5's and they are up to date.
+
+Why nethack-like? Low graphics requirements! No need for 3-d drivers, nor lighting calculations (which javascript is exceedingly bad at right now).
+
+We're aiming for 4-player co-op, but could probably increase that limit as we go.
+
+The client is just HTML5/JS. The server is currently being done in node.js
+
