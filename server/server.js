@@ -82,6 +82,7 @@ function Session(id){
   }
 
   this.PushMessage = function(data){
+    console.log(data.uid + ': ' + data.msg);
     for(var user in Users)
     {
       user.emit('chat', data);

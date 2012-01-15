@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <script src="/js/MochiKit.js"></script>
   <script src="/socket.io/socket.io.js"></script>
   <script src="/common/js/util.js"></script>
   <script src="/common/js/Queue.compressed.js"></script>
   <script src="/js/hon.js"></script>
+  <script src="/js/chat.js"></script>
   <script src="/js/connection.js"></script>
   <script src="/js/jquery-1.7.1.js"></script>
 </head>
@@ -12,8 +14,12 @@
   <script>
     $(document).ready(function () {
       console.log('initializing...');
-      HoN.Connection.Connect();
+      //start MochiKit Logging console
+      createLoggingPane(true);
 
+      //initialize client
+      HoN.Connection.Connect();
+    });
   </script>
 
   <h1 id="connectstatus">Connecting...</h1>
