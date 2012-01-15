@@ -44,7 +44,8 @@ return (_1.length>0?_1[_2]:undefined);
 
 var app = require('http').createServer(handler),
   io = require('socket.io').listen(app),
-  fs = require('fs');
+  fs = require('fs'),
+  path = require('path');
 
 var base = process.argv[2] || '/var/www/';
 
@@ -53,19 +54,19 @@ app.listen(80);
 function handler (req, res) {
   console.log('incoming request for ' + req.url);
   var filepath = '.' + req.url;
-  if(filepath = './') {
+  if(filepath == './') {
     filepath = 'index.html';
   }
   var filepath = base + filepath;
   console.log('file believed to be at: ' + filepath);
   var file_ext = path.extname(filepath);
-  var contentType = 'text/';
+  var contentType = 'text/html';
   switch(file_ext) {
     case '.js':
-      contentType = contentType + 'javascript';
+      contentType = 'text/javascript';
       break;
     case '.css':
-      contentType = contentType + 'css';
+      contentType = 'text/css';
       break;
   }
 

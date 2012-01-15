@@ -16,7 +16,7 @@ _con.USERID = 0;
 
 _con.Connect = function () {
   console.log('attempting to connect to ' + _con.HOST +':'+ _con.PORT);
-  _con.SOCK = io.connect(_con.HOST +':'+ con.PORT);
+  _con.SOCK = io.connect(_con.HOST +':'+ _con.PORT);
   _con.SOCK.on('ack', _con.Connected);
  }
 

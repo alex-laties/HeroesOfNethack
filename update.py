@@ -11,7 +11,7 @@ repo = "git://github.com/alex-laties/HeroesOfNethack.git"
 def main():
   opts = 0
   args = 0
-  target = ''
+  target = '/var/www'
   branch = 'master'
   try:
     opts, args = getopt.getopt(sys.argv[1:], "t: b:", ["target=", "branch="])
@@ -46,7 +46,7 @@ def main():
   call(["cp", "-r" , temp + "/client/index.html", temp+"/client/css", temp+"/client/js", target])
   call(["cp", "-r", temp + "/common", target])
   print "removing temp..."
-  #call(["rm", "-rf", temp])
+  call(["rm", "-rf", temp])
 
 if __name__ == "__main__":
   main()
