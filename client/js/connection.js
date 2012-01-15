@@ -38,7 +38,7 @@ _con.Connect = function () {
   HoN.SelectGame();
  }
 
- _con.Send = function(type, data) {
+_con.Send = function(type, data) {
   if (! _con.LIVE)
   {
     _con.SEND_QUEUE.enqueue( { t : type, d : data } );
