@@ -46,21 +46,56 @@ var app = require('http').createServer(handler),
   io = require('socket.io').listen(app),
   fs = require('fs');
 
-var index = process.argv[2] || '/var/www/index.html';
+var base = process.argv[2] || '/var/www/';
 
 app.listen(80);
 
 function handler (req, res) {
-  fs.readFile(index,
-  function (err, data) {
-    if(err){
-      res.writeHead(500);
-      return res.end('Error loading index.html');
+  console.log('incoming request for ' + req.url);
+  var filepath = '.' + req.url;
+  if(filepath = './') {
+    fs.readFile(base + 'index.html',
+    function (err, data) {
+      if(err){
+        res.writeHead(500);
+        return res.end('Error loading index.html');
+      }
+
+      res.writeHead(200, { 'Content-Type' : 'text/html'});
+      res.end(data, 'utf-8');
+    });
+  }
+  else {
+    var filepath = base + filepath;
+    var file_ext = path.extname(filepath);
+    var contentType = 'text/';
+    switch(file_ext) {
+      case '.js':
+        contentType = contentType + 'javascript';
+        break;
+      case '.css':
+        contentType = contentType + 'css';
+        break;
+      case default:
+        contentType = contentType + 'html';
+        break;
     }
 
-    res.writeHead(500);
-    res.end(data);
-  });
+    path.exists(filepath, function(e) {
+      if (e) {
+        fs.readFile(filepath, function(err, data) {
+          if (err) {
+            res.writeHead(500);
+            res.end();
+          }
+          else {
+            res.writeHead(200, {'Content-Type' : contentType });
+            res.end(data, 'utf-8');
+          }
+        });
+      }
+    });
+  }
 }
 
 function Session(id){
