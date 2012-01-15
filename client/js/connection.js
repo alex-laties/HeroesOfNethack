@@ -11,6 +11,7 @@ _con.PORT = '80';
 _con.SOCK = '';
 _con.LIVE = false;
 _con.SEND_QUEUE = new Queue();
+_con.USERID = 0;
 
 
 _con.Connect = function () {
@@ -18,30 +19,31 @@ _con.Connect = function () {
   _con.SOCK = io.connect(_con.HOST +':'+ con.PORT);
   _con.SOCK.on('ack', _con.Connected);
  }
- 
+
  _con.Connected = function(data) {
   if(!data.success)
   {
     console.log('connection unsuccessful');
     console.log(data.msg);
   }
-  
+
   console.log('connection successful!');
   _con.LIVE = true;
+  _con.USERID = data.uid;
+  //BINDS
   _con.SOCK.on('state', HoN.State.Sync);
   _con.SOCK.on('events', HoN.State.Update);
   _con.SOCK.on('alert', HoN.Alert);
   _con.SOCK.on('chat', HoN.Chat.Update);
-  _con.SOCK.emit('sync', { uID : HoN.USERID });
-  
+  HoN.SelectGame();
  }
- 
+
  _con.Send = function(type, data) {
   if (! _con.LIVE)
   {
     _con.SEND_QUEUE.enqueue( { t : type, d : data } );
   }
-  
+
   //clear queue
   var temp = '';
   while(! _con.SEND_QUEUE.isEmpty())
@@ -49,7 +51,7 @@ _con.Connect = function () {
     temp = _con.SEND_QUEUE.dequeue();
     _con.SOCK.emit(temp.t, temp.d);
   }
-  
+
   //send current message
   _con.SOCK.emit(type, data);
 }

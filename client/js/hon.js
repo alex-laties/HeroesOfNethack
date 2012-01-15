@@ -1,6 +1,6 @@
 var hon = namespace('HoN');
 
-hon.Character = new function (_name, _hp, _mp, _agi, _agiG, _int, _intG, _str, _strG, _ab1, _ab2, _ab3, _ab4) {
+hon.Character = function Character(_name, _hp, _mp, _agi, _agiG, _int, _intG, _str, _strG, _ab1, _ab2, _ab3, _ab4) {
   this.name = _name;
   this.hp = _hp;
   this.mp = _mp;
@@ -22,7 +22,11 @@ hon.Character = new function (_name, _hp, _mp, _agi, _agiG, _int, _intG, _str, _
 }
 
 hon.Init = function () {
-  
+
+}
+
+hon.Alert = function (data) {
+  alert(data.msg);
 }
 
 hon.PrintState = function () {
@@ -32,6 +36,20 @@ hon.PrintState = function () {
   $("agi")[0].textContent("Agility: " + HoN.State.player.agility);
   $("int")[0].textContent("Intelligence: " + HoN.State.player.intel);
   $("str")[0].textContent("Strength: " + HoN.State.player.strength);
-  
+
   //TODO print items and abilities
+}
+
+hon.SelectGame = function () {
+  $("#connectstatus").textContent("Connected!").hide('slow');
+  $("#sid").show('slow').keypress( function (event) {
+      if(event.keyCode == 13)
+      {
+        HoN.Connection.Send('join',
+                            {
+                              uid : HoN.Connection.USERID,
+                              name : $(this).val()
+                            });
+      }
+  });
 }
