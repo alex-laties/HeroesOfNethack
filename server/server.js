@@ -54,48 +54,35 @@ function handler (req, res) {
   console.log('incoming request for ' + req.url);
   var filepath = '.' + req.url;
   if(filepath = './') {
-    fs.readFile(base + 'index.html',
-    function (err, data) {
-      if(err){
-        res.writeHead(500);
-        return res.end('Error loading index.html');
-      }
-
-      res.writeHead(200, { 'Content-Type' : 'text/html'});
-      res.end(data, 'utf-8');
-    });
+    filepath = 'index.html';
   }
-  else {
-    var filepath = base + filepath;
-    var file_ext = path.extname(filepath);
-    var contentType = 'text/';
-    switch(file_ext) {
-      case '.js':
-        contentType = contentType + 'javascript';
-        break;
-      case '.css':
-        contentType = contentType + 'css';
-        break;
-      case default:
-        contentType = contentType + 'html';
-        break;
+  var filepath = base + filepath;
+  console.log('file believed to be at: ' + filepath);
+  var file_ext = path.extname(filepath);
+  var contentType = 'text/';
+  switch(file_ext) {
+    case '.js':
+      contentType = contentType + 'javascript';
+      break;
+    case '.css':
+      contentType = contentType + 'css';
+      break;
+  }
+
+  path.exists(filepath, function(e) {
+    if (e) {
+      fs.readFile(filepath, function(err, data) {
+        if (err) {
+          res.writeHead(500);
+          res.end();
+        }
+        else {
+          res.writeHead(200, {'Content-Type' : contentType });
+          res.end(data, 'utf-8');
+        }
+      });
     }
-
-    path.exists(filepath, function(e) {
-      if (e) {
-        fs.readFile(filepath, function(err, data) {
-          if (err) {
-            res.writeHead(500);
-            res.end();
-          }
-          else {
-            res.writeHead(200, {'Content-Type' : contentType });
-            res.end(data, 'utf-8');
-          }
-        });
-      }
-    });
-  }
+  });
 }
 
 function Session(id){
